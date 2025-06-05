@@ -1,4 +1,4 @@
-💡 PowerShell for Database Developers – Key Points:
+#   💡 PowerShell for Database Developers – Key Points:
 
 🔢	Concept	Description
 
