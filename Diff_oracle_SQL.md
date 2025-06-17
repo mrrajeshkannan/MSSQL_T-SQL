@@ -1,5 +1,5 @@
 
-# --DAta Base Name / Server Name:-
+# --Data Base Name / Server Name:-
 ```
 SELECT @@SERVERNAME;
 ```
@@ -99,6 +99,7 @@ SELECT top 10 BUSINESSENTITYID FROM PERSON.PERSON
 
 
 ##  ---- PROCEDURE CREATATION in MSSQL:-
+```
 IF OBJECT_ID('EMP_DEPT', 'P') IS NOT NULL
     DROP PROCEDURE EMP_DEPT;
 GO
@@ -113,3 +114,4 @@ END;
 GO
 
 EXEC EMP_DEPT @DEPT_ID = 60;
+```
