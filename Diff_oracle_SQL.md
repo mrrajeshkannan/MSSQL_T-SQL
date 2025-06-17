@@ -21,9 +21,20 @@ USE [AdventureWorks2016];
 
 
 
-##  --Alter table column :-
-EXEC sp_rename 'TableName.OldColumnName', 'NewColumnName', 'COLUMN';
+## ---Table description 
+```
+SELECT * 
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME ='EMPLOYEES';
 
+```
+
+
+
+##  --Alter table column :-
+```
+EXEC sp_rename 'TableName.OldColumnName', 'NewColumnName', 'COLUMN';
+```
 
 
 ## --Concodinatation :-
@@ -77,8 +88,28 @@ FROM SALES.SALESORDERHEADER;
 ```
 
 
--- Union, Union all Except concept:- 
-
+## -- Union, Union all Except concept:- 
+```
 SELECT TOP 10 BUSINESSENTITYID FROM HUMANRESOURCES.EMPLOYEE
 EXCEPT		-- LIKE MINUS IN ORACLE
 SELECT top 10 BUSINESSENTITYID FROM PERSON.PERSON
+```
+
+
+
+
+##  ---- PROCEDURE CREATATION in MSSQL:-
+IF OBJECT_ID('EMP_DEPT', 'P') IS NOT NULL
+    DROP PROCEDURE EMP_DEPT;
+GO
+
+CREATE PROCEDURE EMP_DEPT @DEPT_ID INT
+AS
+BEGIN
+    SELECT * 
+    FROM EMPLOYEES
+    WHERE DEPARTMENT_ID = @DEPT_ID;
+END;
+GO
+
+EXEC EMP_DEPT @DEPT_ID = 60;
