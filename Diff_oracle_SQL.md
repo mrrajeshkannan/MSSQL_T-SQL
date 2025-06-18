@@ -115,3 +115,38 @@ GO
 
 EXEC EMP_DEPT @DEPT_ID = 60;
 ```
+
+
+
+
+## 🔍 How to Check Current Statistics:-
+```
+-- View statistics details for a table
+EXEC sp_helpstats 'TableName';
+
+-- View stats info (when last updated, etc.)
+DBCC SHOW_STATISTICS ('TableName', 'StatisticName');
+```
+
+
+## Update all stats in the table
+🛠️ Syntax
+```
+-- Update all stats in the table
+UPDATE STATISTICS TableName;
+
+-- Update stats on a specific index or column stat
+UPDATE STATISTICS TableName IndexOrStatisticName;
+
+-- With FULLSCAN (reads all rows)
+UPDATE STATISTICS TableName WITH FULLSCAN;
+
+-- With sample size
+UPDATE STATISTICS TableName WITH SAMPLE 50 PERCENT;
+```
+
+
+
+
+
+
