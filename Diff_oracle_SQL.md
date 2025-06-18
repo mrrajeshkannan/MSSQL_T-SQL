@@ -98,24 +98,17 @@ SELECT top 10 BUSINESSENTITYID FROM PERSON.PERSON
 
 
 
-##  ---- PROCEDURE CREATATION in MSSQL:-
-```
-IF OBJECT_ID('EMP_DEPT', 'P') IS NOT NULL
-    DROP PROCEDURE EMP_DEPT;
-GO
 
-CREATE PROCEDURE EMP_DEPT @DEPT_ID INT
-AS
-BEGIN
-    SELECT * 
-    FROM EMPLOYEES
-    WHERE DEPARTMENT_ID = @DEPT_ID;
-END;
-GO
+## 🧱 Types of Indexes in MS SQL Server
 
-EXEC EMP_DEPT @DEPT_ID = 60;
-```
-
+| **Index Type**        | **Description**                                                                 |
+|-----------------------|----------------------------------------------------------------------------------|
+| **Clustered Index**   | Physically sorts the table rows. Only one per table.                            |
+| **Non-Clustered Index** | Separate structure pointing to table rows. You can have many of these.         |
+| **Unique Index**      | Ensures values in indexed column(s) are unique.                                 |
+| **Composite Index**   | Index on multiple columns (e.g., `FirstName`, `LastName`).                      |
+| **Filtered Index**    | Index on subset of rows using a `WHERE` clause.                                 |
+| **Full-Text Index**   | Supports complex text searches (`CONTAINS`, `FREETEXT`).                        |
 
 
 
@@ -144,6 +137,38 @@ UPDATE STATISTICS TableName WITH FULLSCAN;
 -- With sample size
 UPDATE STATISTICS TableName WITH SAMPLE 50 PERCENT;
 ```
+
+
+
+
+
+
+
+
+
+
+
+##  ---- PROCEDURE CREATATION in MSSQL:-
+```
+IF OBJECT_ID('EMP_DEPT', 'P') IS NOT NULL
+    DROP PROCEDURE EMP_DEPT;
+GO
+
+CREATE PROCEDURE EMP_DEPT @DEPT_ID INT
+AS
+BEGIN
+    SELECT * 
+    FROM EMPLOYEES
+    WHERE DEPARTMENT_ID = @DEPT_ID;
+END;
+GO
+
+EXEC EMP_DEPT @DEPT_ID = 60;
+```
+
+
+
+
 
 
 
