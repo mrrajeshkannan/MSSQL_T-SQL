@@ -63,14 +63,19 @@ SELECT FIRSTNAME, SUBSTRING(FIRSTNAME,3,4), SUBSTRING(FIRSTNAME,1,4)
 FROM Person.Person;
 ```
 
+## --Write a query to get records in XML format:-
+SELECT * 
+FROM EMP
+ FOR XML AUTO;
 
 
 ## -- Date Function :-
 ```
 SELECT CURRENT_TIMESTAMP;
+SELECT GETDATE();
 ```
 
--- Extract Day / Month / Year from date field:-
+## -- Extract Day / Month / Year from date field:-
 ```
 SELECT OrderDate, DueDate,
 Day(OrderDate) as day,
