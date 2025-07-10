@@ -126,6 +126,26 @@ EXEC sp_helpstats 'TableName';
 DBCC SHOW_STATISTICS ('TableName', 'StatisticName');
 ```
 
+## Check fragmentation in table :-
+```
+SELECT 
+    OBJECT_NAME(ips.OBJECT_ID) AS TableName,
+    i.name AS IndexName,
+    i.type_desc AS IndexType,
+    ips.index_level,
+    ips.avg_fragmentation_in_percent,
+    ips.page_count
+FROM sys.dm_db_index_physical_stats (
+    DB_ID(),                     -- Current DB
+    OBJECT_ID('EMPLOYEES'),     -- Table name
+    NULL,                       -- All indexes
+    NULL, 
+    'LIMITED'                   -- Fast mode
+) AS ips
+JOIN sys.indexes i 
+    ON ips.object_id = i.object_id AND ips.index_id = i.index_id
+ORDER BY avg_fragmentation_in_percent DESC;
+```
 
 ## Update all stats in the table
 🛠️ Syntax
