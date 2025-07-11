@@ -92,7 +92,18 @@ CONVERT(DATE, '2024-06-01', 120)	--Convert string to date
 
 FROM SALES.SALESORDERHEADER;
 ```
+## --  Select Random Rows from a Table
+```
+SELECT TOP 1 *
+FROM Employees
+ORDER BY NEWID();
 
+
+-- Random integer between 1 and 100
+SELECT FLOOR(RAND() * 100) + 1 AS RandomInt;
+
+
+```
 
 ## -- Union, Union all Except concept:- 
 ```
