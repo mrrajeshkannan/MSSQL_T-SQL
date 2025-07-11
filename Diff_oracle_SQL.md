@@ -64,10 +64,11 @@ FROM Person.Person;
 ```
 
 ## --Write a query to get records in XML format:-
+```
 SELECT * 
 FROM EMP
  FOR XML AUTO;
-
+```
 
 ## -- Date Function :-
 ```
@@ -100,6 +101,26 @@ EXCEPT		-- LIKE MINUS IN ORACLE
 SELECT top 10 BUSINESSENTITYID FROM PERSON.PERSON
 ```
 
+## Truncate concupt in MSQL:-
+In T-SQL, TRUNCATE TABLE does release memory at the **page level**, but the ****buffer memory may not be cleared immediately**. **
+
+
+SQL Server will reuse the freed pages as needed, which differs slightly from Oracle’s explicit memory cleanup.
+
+## 🔍 Comparison: `TRUNCATE TABLE` in SQL Server vs Oracle
+
+| Feature                       | SQL Server `TRUNCATE`                         | Oracle `TRUNCATE`                           |
+|------------------------------|-----------------------------------------------|---------------------------------------------|
+| **Deallocates Data Pages**   | ✅ Yes                                         | ✅ Yes                                       |
+| **Minimal Logging**          | ✅ Yes (deallocation only, not row-level)      | ✅ Yes (also minimally logged)              |
+| **Transactional (Can Rollback)** | ✅ Yes (if used inside `BEGIN TRAN`)     | ❌ No (auto-commits; DDL is not transactional) |
+| **Frees Memory Immediately** | ⚠️ Not guaranteed (buffer pages remain until needed) | ✅ Usually clears memory (SGA)        |
+| **Identity Column Reset**    | ✅ Yes (resets identity seed by default)       | ❌ Not applicable (handled differently)      |
+| **Triggers Fired**           | ❌ No                                          | ❌ No                                        |
+| **Faster Than DELETE**       | ✅ Yes (especially for large datasets)         | ✅ Yes                                       |
+| **Can Be Rolled Back?**      | ✅ Yes (if in a transaction)                   | ❌ No                                        |
+
+> ⚠️ In SQL Server, memory pages may remain in the buffer pool until reclaimed by other operations. Use `DBCC DROPCLEANBUFFERS` for manual memory clearing (for testing only).
 
 
 
